@@ -1,0 +1,69 @@
+Kubernetes
+It is Open-source orchestartion tool used to manage conterized application
+
+Features:
+1.High availability
+2.scalibility 
+3.Durability
+4.Its automates the delpoyment
+load balancer
+
+https://github.com/anujdevopslearn/InterviewQuestions/blob/master/InstallationGuides/CleanServices.txt
+
+28-30 --- to cleanup commands
+
+InstallationGuides
+
+https://github.com/anujdevopslearn/InterviewQuestions/blob/master/InstallationGuides/Kubernetes.txt
+
+3-9
+
+kubectl get pods --all-namespaces - to get internal components
+
+kubectl get node - it shows kube status is ready or not
+
+
+Deploy the containers:
+
+excuted three containers here
+
+kubectl run kubernetes-bootcamp --image=docker.io/jocatalin/kubernetes-bootcamp:v1 --port=8080
+kubectl run kubernetes-jenkins --image=docker.io/jenkins --port=8080
+kubectl run kubernetes-nginx --image=docker.io/nginx --port=80
+
+
+kubectl get delpoyment
+
+kubectl describe pod kubernetes-bootcamp-7dc9765bf6-gmzjd
+
+kubectl get pods -o wide - different amount of information
+
+curl localhost_ip_address
+
+kubectl exec -it <NAME_of pods> bash - go to inside the pod
+
+kubectl delete pod <Name_of_Pods> - if delete also it gives alternate pod with using new pod_id and new IP_Address
+
+
+
+Deploy the pods outside the world using below commands:
+
+kubectl expose deployment/kubernetes-bootcamp --port=8080 --target-port=8080 --type=NodePort
+kubectl expose deployment/kubernetes-jenkins --port=8080 --target-port=8080 --type=NodePort
+kubectl expose deployment/kubernetes-nginx --port=80 --target-port=80 --type=NodePort
+
+kubectl get services
+
+kubectl delete service service_name - delete the services
+
+kubectl scale deployments/kubernetes-bootcamp --replicas=2 - to create to replicas
+
+kubectl scale deployments/kubernetes-bootcamp --replicas=0 - we can terminate the replicas
+
+depoly a new docker image with a new version unsing commands:
+
+kubectl set image deployments/kubernetes-bootcamp kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+kubectl rollout status deployments/kubernetes-bootcamp
+kubectl rollout undo deployments/kubernetes-bootcamp
+
+

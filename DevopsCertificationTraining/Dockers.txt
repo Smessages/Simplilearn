@@ -1,0 +1,122 @@
+Dockers
+to install
+apt install docker.io
+
+_______________
+pull images into your local system using commad
+
+docker pull ubuntu
+docker pull ubuntu:16.04 - pull specfic version
+docker pull centos:6 - pull specfic version
+docker pull nginx
+docker pull jenkins
+docker rmi image_name:tag_name - remove docker images
+
+you can also export docker into tar file, so that they can tarnsfered to one server to another by using command
+docker save image_name:<tag> -o tar_filename
+
+you can import docker images with all the layers from a tar
+docker loab -l tar_filename
+______________
+An instance of docker images can be create enter the command
+
+-i or --interacive keeps STDIN open
+-t or --tty allocates a pseudo TTY
+
+docker run -it ubuntu bash
+
+docker run -it centos bash
+
+docker run -it nginx bash
+_______________
+docker ps - to show only running containers
+docker ps -a - to shoing the running and inactive containers
+_______________
+
+docker logs container_id or container_name - you can access the logs 
+
+docker stop container_id or container_name
+
+docker start container_id or container_name
+
+docker kill container_id or container_name
+
+docker pause container_id or container_name
+
+docker unpause container_id or container_name
+
+docker rm container_id or container_name -f(forcefully)  -- to remove containers
+
+docker stats - to show how much memory you used
+
+after / ctrl+C
+
+docker rename <exiting_container_name> <nerw_container_name> - to rename container
+__________________________
+run jenkins
+
+interative mode - debugging and trouble shooting
+
+docker run -d(detached mode) jenkins - hosting the application into environment
+
+docker inspect container_id or container_name - when it is started and environment variables and ip address and gateway
+
+docker exec -it container_id or container_name bash
+
+cat /var/jenkins_home/secrets/initialAdminPassword
+
+docker run -d --name(we can change the name) jenkins_dev -p(port mapping) 8080(host machine_we can change the port numbers):8080(jenkins_application port-we can't change) jenkins
+
+docker run -d --name jenkins_dev -p 8080:8080 jenkins
+
+docker ps
+
+docker run -d --name jenkins_prod -p 8081:8080 jenkins
+
+curl wgetip.com -we will get public ip_address
+__________________________
+Deploy docker 
+
+docker_file
+
+docker build -t(tag)customdockerimage .(use current directory) -f Dockerfile
+
+git clone https://github.com/anujdevopslearn/Docker/
+cd Docker
+docker build -t customdockerimage . -f Dockerfile
+docker images
+
+netstat -ntlp - which port whom using
+
+docker run -d -p 8080:80 customdockerimage
+
+service jenkins stop - to stop jenkins 8080 port
+
+work --- https://github.com/anujdevopslearn/AspDotNetDocker
+
+docker & docker-build-setp plugin neeed to download
+
+work - https://github.com/anujdevopslearn/Docker.git
+
+http://54.80.232.52:8080/ - jenkins_url
+
+__________________________
+
+Docker Registry
+
+docker pull registry:2
+docker run -d -p 5000:5000 --restart=always --name registry registry:2
+docker pull ubuntu
+docker tag ubuntu localhost:5000/ubuntu
+docker push localhost:5000/ubuntu
+
+lets remove original docker image
+
+docker rmi ubuntu
+
+docker images
+
+
+
+
+

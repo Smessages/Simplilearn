@@ -1,0 +1,38 @@
+Install_Jenkins
+
+sudo apt update
+sudo apt install openjdk-8-jdk
+Jenkins
+
+wget -q -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo apt-key add -
+sudo sh -c 'echo deb https://pkg.jenkins.io/debian-stable binary/ > /etc/apt/sources.list.d/jenkins.list'
+sudo apt-get update
+sudo apt-get install jenkins
+systemctl status jenkins
+
+If java was not installed - sudo apt-get install openjdk-8-jre
+
+after install
+service jenkins status
+service jenkins restart
+then open browser enter - localhost:8080
+enter in cmd line- sudo cat /var/lib/jenkins/secrets/intialAdminPassword
+__________________________________
+
+Copy: Ctrl+C or Ctrl+Insert (Mac: Command + C)
+Paste: Ctrl+V or Shift+Insert (Mac: Command + V)
+Cut: Ctrl+X or Shift+Delete (Mac: Command + X)
+
+--------------------------------------------
+sateeshkumarvss.centralus.cloudapp.azure.com:8080   - URL
+
+https://github.com/anujdevopslearn/InterviewQuestions - interview questions & commands
+
+https://github.com/jitpack/maven-simple.git - maven sample project
+https://github.com/web3j/sample-project-maven
+https://github.com/mkyong/maven-example
+
+______________________________________
+
+https://github.com/jenkinsci/pipeline-examples/tree/master/jenkinsfile-examples - 
+https://github.com/anujdevopslearn/InterviewQuestions/blob/master/Demos/Setting%20up%20Jenkins%20pipeline.docx - 

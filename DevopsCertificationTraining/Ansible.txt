@@ -1,0 +1,157 @@
+Configuration management tools
+Ansible
+
+sudo apt-get install software-properties-common -- package installation
+sudo apt-add-repository ppa:ansible/ansible 
+sudo apt-get update
+sudo apt-get install ansible
+
+connect with servers : 
+
+go to root directory 
+
+goto cd /etc/ansible
+
+press i and then do modifications
+and if you want to save press ESC + :wq!
+
+ansible -m ping webservers
+ansible -m ping dbservers
+ansible -m ping all
+
+____________________________________
+connect with two servers
+master
+ssh-keygen -t rsa
+cat .ssh/id_rsa.pub 
+ssh -p 42006 IP_address "hostname"
+
+client
+echo "Public_key" >> /root/.ssh/authorized_keys
+
+_________________________________________________
+ls -alrt /root/.ssh/ - to show list of files
+ansible -m ping webservers -i /etc/ansible/hosts
+
+SHA256:p5xbvaHHEKFjslNVeKLLbn7RuN0kVVl38D4NsWcVPAU
+____________________________________________________
+Connectivity with localhost
+sudo su -
+cd .ssh/
+ls -alrt
+pwd
+cat id_rsa.pub >> authorized_keys 
+ssh -p 42006 localhost "date"
+
+got to ---  /etc/ansible/hosts
+
+modified the file 
+
+localhost ansible_port=42006
+
+run the command
+ansible -m ping webservers
+_____________
+
+install apache into webservers
+
+so first download playbooks file (YML)into servers
+
+wget https://gist.githubusercontent.com/anujdevopslearn/8395705058c9cd4f4f5c3fec5591b246/raw/ca103bfd5a8791c805aaed30efc9c2cb192e7e72/apache.yml
+
+ansible-playbook apache.yml
+
+check the apache status is runnung or not 
+using the cmd : service apache2 status
+____________________________________
+mysql installation
+
+work -  https://gist.github.com/anujdevopslearn/98a73c0ef7f72a70fc11759f8b2b9c25
+
+____________________________________
+Tomcat Installation
+
+wget https://gist.githubusercontent.com/anujdevopslearn/efa28700a3b8aca18d2866aa2d24fa02/raw/a48022c9b6111a668fcc9f3f3c63928ea2840db0/TomcatInstallation.yml
+
+goto cd opt/ check tomcat install or not using ls-lart command
+
+____________________________________
+Integartion to jenkins with Ansible
+
+ps -ef | grep tomcat
+ps -ef | grep jenkins
+
+vi etc/default/jenkins - open VI mode change the jenkins user & Group as root(because i already connected with jenkins with root)
+
+after restart that jenkins using cmd service jenkins restart
+
+!ps - to check the status of jenkins up & running
+
+then go jenkins and update the 
+
+SCM - take source code through GIT
+Build - clean package
+Invoke Ansible Ad-hoc command - webservers (which server we want to deploy)
+module- ping
+invoke ansible playbook - enter your YML file name
+
+once war file is exceted we can see using cmd
+
+ls -alrt /opt/apache-tomcat-8.5.53/webapps/
+
+ansible -m shell -a "apt install -y openjdk-8-jdk" webservers
+
+
+/etc/default/jenkins
+
+service jenkins restart
+!ps
+
+https://github.com/anujdevopslearn/MavenBuild
+
+unisntall tomcat -- https://gist.github.com/anujdevopslearn/7f44b4505caa46da6b4bd66241044039
+
+____________________________________
+
+Puppet
+
+Installation of puppet
+
+docker network create puppet
+apt-get install puppet-common
+docker pull puppet/puppetserver-standalone - download the puppet image
+docker pull puppet/puppet-agent-alpine
+docker run --net puppet -d --name puppetserver --hostname puppet puppet/puppetserver-standalone
+docker logs- check the installation 
+docker run --rm --net puppet --link=puppetserver:puppet puppet/puppet-agent-alpine
+docker run --rm --net puppet --link=puppetserver:puppet puppet/puppet-agent-alpine resource package
+
+____________________________________
+
+Chef
+
+wget 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

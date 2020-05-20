@@ -1,0 +1,18 @@
+Install Team city
+
+open chrome - www.jedbrains.com/temacity/download
+
+open cmd line - cd /home/ubuntu/downloads/ - navigate to downloaded files
+
+tar cxvf Teamcity.2018.2.1.tar.gz - extract files
+
+sudo mkdir /opt/JetBrains- now we can move the directory team city
+sudo mv TeamCity /opt/JetBrains/Temacity
+cd /opt/JetBrains
+chmod -R 777 Teamcity/
+ls - to check teamcity
+./teamcity-sever.sh start - to run the teamcity
+
+ipaddress - localhost:8111
+
+

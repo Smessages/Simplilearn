@@ -1,0 +1,59 @@
+Nagois
+
+For InstallationGuides/CleanServices
+
+https://github.com/anujdevopslearn/InterviewQuestions/blob/master/InstallationGuides/CleanServices.txt
+14-23
+apt remove --purge php* -y 
+apt install php7.0 -y
+apt remove --purge nginx apache2 postgresql* jenkins -y
+apt remove --purge mysql-server-core-5.7 mysql-server-5.7 mysql-server mysql-client mysql-client-5.7 apache2 -y
+apt autoremove -y
+rm -rf /var/lib/mysql*
+rm -rf /var/log/mysql/
+mkdir -p /etc/mysql/conf.d
+docker rm `docker ps -a -q` -f
+docker rmi `docker images -q`
+
+https://assets.nagios.com/downloads/nagiosxi/docs/Installing-Nagios-XI-Manually-on-Linux.pdf
+
+http://10.0.1.4/nagiosxi/ - to get 
+
+,8Yo0$cY#YRhJYT$,v%k - nagiosadmin--password
+nagiosadmin - username
+
+https://support.nagios.com/kb/article.php?id=146 - To reset nagiosadmin password
+
+Monitor Mysql :
+
+docker run -d --name mysql -e MYSQL_ROOT_PASSWORD=password mysql
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

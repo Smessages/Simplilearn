@@ -1,0 +1,23 @@
+Install Tomcat in ubuntu
+8088-port
+apt-get update
+apt-get install tomcat8
+apt-get install tomcat8-docs tomcat8-examples tomcat8-admin
+systemctl restart tomcat8
+systemctl status tomcat8
+ifcong
+nano /var/lib/tomcat8/conf/tomcat-users.xml
+
+add the following
+
+<role rolename="manager-gui"/>
+<role rolename="admin-gui"/>
+<user username="satish" password="satish" roles="manager-gui,admin-gui"/>
+
+Restart the Tomcat server
+systemctl restart tomcat8
+
+nano /var/lib/tomcat8/conf/server.xml - to change password
+after change the password then restart the tomcat8
+systemctl restart tomcat8
+

@@ -1,0 +1,38 @@
+GIT
+ubuntu - apt-get install git & yum install git
+
+git config --global user.name satish
+git config --global user.email satish@xyz.com
+
+git branch -l
+git branch develop
+git branch -l
+git log --oneline
+git checkout develop
+git branch -l
+git log --oneline
+git diff master
+  
+Public DNS : sateeshkumarvss.centralus.cloudapp.azure.com
+usrname : sateeshkumarvss
+password : kumarvss0A@itmrw
+SSH port -42006 - putty
+  
+  
+curl wgetip.com - local cmd
+ssh -p 42006 username@dnsname
+  
+vi .git/config - to change the git to other websites
+
+____________________________
+
+git branch -l
+ls -lart
+cat README.md
+echo "Develop Branch Commit" >> README.md
+cat README.md
+git status
+git add README.md
+git commit -m "Develop Branch Commit"
+git log --oneline
+git diff master
