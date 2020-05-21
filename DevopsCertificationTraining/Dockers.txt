@@ -116,6 +116,92 @@ docker rmi ubuntu
 
 docker images
 
+_____________________________________
+Docker compose
+
+--it is tool for running & defining munti-containers docker
+
+--use yaml files to configure application servies
+
+Installation - ubuntu
+
+1.https://github.com/docker/compose/releases
+
+docker-compose -v
+
+2.using PIP
+pip isntall -U docker-compose
+
+
+Creare docker compose file using
+
+docker-compose.yml
+
+--Check the validity of the file by using command
+docker-compose config
+
+--can start all services with a single command
+docker-compose up
+
+----can stop all services with a single command
+docker-compose down
+
+
+--how to scale services
+docker-compose up -d --scale web=3
+__________________
+Docker Volume
+
+docker volume//get information
+Docker volume create
+docker volume ls
+docker volume inspect
+docker volume rm
+docker volume prune
+
+uses of volumes:
+
+share volume
+attach volume to container
+on deleting container volume does not delete
+decoupling container from storage
+
+
+--Volumes are best way to persist the data in Docker.
+
+--The data doesn't persist when that container is no longer running.
+--Docker has two options for containers to store files in the host machine
+
+So that the files are persisted even after the container stops.
+
+volumes and Bind mounts
+
+Volumes are stored in a part of the host filesystem which is managed by Docker
+
+Non-Docker processes should not be modify this part of the lifesystem
+
+Bind Mounts may be stored anywhere on the host system
+
+Non-docker processes on the docker host or a docker container ca modify them at any time
+
+In Bind mounts, the file or directory is referenced by its full path on the host machine 
+
+A given volume can be mounted into multiple containers simultaneously.
+
+When no running containerr is using a volume. the volume is still available to docker and is not removed automatically. you can remove unused volumes unsing docker volume prune.
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
