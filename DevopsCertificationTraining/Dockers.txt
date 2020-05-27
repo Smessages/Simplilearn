@@ -190,3 +190,22 @@ A given volume can be mounted into multiple containers simultaneously.
 
 When no running containerr is using a volume. the volume is still available to docker and is not removed automatically. you can remove unused volumes unsing docker volume prune.
 
+--assing volumes to jenkins:
+
+docker volume create myvol - to create volume
+
+docker pull jenkins
+
+docker run --name Myjenkins -v myvol:/var/jenkins_home -p 8081:8080 -p 50000:50000 jenkins
+
+to share jenkins volumes to another jenkins port
+
+
+docker run --name Myjenkins1 -v myvol:/var/jenkins_home -p 8082:8080 -p 60000:50000 jenkins
+
+Bind mounts : 
+
+we can use physical location instead of volumes 
+
+docker run --name Myjenkin2 -v user/sateeshkumar/Desktop:/var/jenkins_home -p 9191:8080 -p 80000:50000 jenkins
+
