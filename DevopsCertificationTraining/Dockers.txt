@@ -190,19 +190,3 @@ A given volume can be mounted into multiple containers simultaneously.
 
 When no running containerr is using a volume. the volume is still available to docker and is not removed automatically. you can remove unused volumes unsing docker volume prune.
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

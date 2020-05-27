@@ -132,8 +132,27 @@ Chef
 
 wget
 
+___________
 
+Install Nginx through playbook
 
+---
+- name: nginx install & start services
+  host: all
+  become: true
+
+  tasks:
+  - name: install nginx
+    yum:
+      name: nginx
+      state: latest
+  
+  - name: start nginx
+    service:
+      name: nginx
+      state: started
+
+__________________
 
 
 
