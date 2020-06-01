@@ -1,0 +1,295 @@
+Community Link: https://community.simplilearn.com/threads/git-and-github-training-may-23-24-30-31-jun-6-7.51176/
+
+
+
+--> Install Git
+
+
+
+--> Configure Git on your Machine
+    
+ --> Levels
+      
+  - System
+      
+  - Global
+      
+  - Local
+
+
+
+--> Web scale architecture
+  
+  --> 3 objects
+    
+    - Blob -> Data of the file/files version stored in an encrypted and compressed format
+    
+     - Tree -> Hash Ids of Blob objects - corresponding to a particular commit
+    
+     - Commit -> Hash Id of Tree object
+
+  --> SHA-1 -> hashing algorithm used by Git
+
+
+
+
+
+1)Configure Git
+
+$ git config --global user.name "Abhijith" --> Set the user.name
+
+$ git config --global user.email "abhijith@test.com" --> Set the user.email
+
+$ git config user.name          --> Get the user.name
+
+$ git config --list             --> See list of all configurations
+
+
+
+
+2) Git Initialize/Create a local repository
+
+$ git init
+
+
+
+3) Status of Repo
+
+$ git status
+
+
+
+4) Stages a file can be in
+  
+ - Untracked   - when the file is created for the first time in a repo
+  
+ - Tracked
+    
+  $ git add File1.txt  -> The file File1.txt will be added to the staging area
+  
+ - Modified    -> the file is being tracked by Git, but we modified the contents in the working dir
+  
+ - Not staged, but modified  -> refers to version of the file in the working directory
+  
+ - Staged, but Modified      -> refers to version of the file in the staging area
+
+
+    
+
+-> git add format options
+      
+ 
+ $ git add <FILENAME.EXTN>  -> The file with name FILENAME.EXTN will be added to the staging area
+      
+
+ $ git add <FILENAME.EXTN> <FILENAME2.EXTN> -> The file with name FILENAME.EXTN & FILENAME2.EXTN will be added to the staging area
+      
+
+ $ git add .    -> All the files in the directory will be added to the staging area (all files: new, modified)
+      
+
+ $ git add -A   -> All the files in the directory will be added to the staging area (all files: new, modified, deleted)
+      
+
+ $ git add *.txt    -> All the files in the directory with extension as .txt to the staging area
+      
+
+ $ git add demo.*    -> All the files in the directory with name demo irrespective of its extension to the staging area
+
+
+
+
+
+5) To Commit/Create a Version
+
+
+$ git commit -m "<COMMIT MESSAGE HERE>"    -> This will create a version of the repository based on what is there in the staging area.
+
+
+
+$ git commit 
+
+  - Opens the default editor
+                  
+
+  - Nano editor - to save the message - Ctrl+X, Y+Enter, Enter
+                  
+  - Vim editor - Esc, :wq+Enter
+
+
+
+
+$ git commit -am "<COMMIT MESSAGE HERE>"  -> This will add all the files in the working dir to staging area and immediately commit the staging area contents to the local repository
+
+
+
+$ git commit --amend  -> To update the commit message of the latest commit
+
+
+
+
+
+6) History of commits inside a repository
+
+
+$ git log
+      
+ - commit id - SHA key
+      
+ - Author -> who created that commit - get from the configuration
+      
+ - Date   -> when the commit is created
+      
+ - Message -> what you did for that particular version/commit
+
+$ git log 
+ -oneline  -> shortened logs
+
+
+$ git log --author="Abhi" -> filter commits made by a specific user/author
+
+
+$ git log --author="Abhi" -> oneline
+
+
+$ git log --date="mm/dd/yyyy"   -> filter commits based on a date
+
+
+$ git log --since="mm-dd-yyyy"  -> --since or --after
+
+
+$ git log --until="mm-dd-yyyy"  -> --until or --before
+
+
+$ git log --grep="<pattern>"    -> filter based on a pattern
+
+
+$ git log --oneline --graph     -> To see a graph of commit relations and all
+
+
+
+
+$ git log --help    -> To see the man page or help page for the git log command.
+
+
+
+$ git <COMMAND> --help    -> To see the man page or help page for the git command, <COMMAND>.
+
+
+
+
+
+
+$ git diff   -> Compare or find the difference in the contents of file in its working dir version and the staging area
+                      
+
+-> comparing between the content of the file(s) in working dir and staging area
+                      
+
+-> If the staging area is clean, then this will compare the content of the file(s) in working dir with that of the file
+ in the last committed version
+
+
+
+
+$ git diff <commit_id1> <commit_id2>   -> comparing the difference in contents in commit_id1 and commit_id2
+
+
+
+$ git diff <commit_id>        -> comparing the difference in contents in the working dir and the commit_id
+
+    
+
+--> HEAD^            -> Latest version where the head is pointing to
+    
+--> HEAD~1           -> One version before the Latest version where the head is pointing to
+    
+--> HEAD~2           -> Two versions before the Latest version where the head is pointing to
+
+
+
+$ git diff --staged   -> comparing between the content of the file(s) in staging area and the last committed version
+
+
+$ git diff --cached   -> comparing between the content of the file(s) in staging area and the last committed version
+
+
+Reverting Changes in git
+
+
+
+
+$ git checkout -- <FILENAME>        -> Older versions of git - to restore the file content from the staging area to the working dir
+
+
+$ git restore <FILENAME>            -> To restore the file content from the staging area to the working dir, the content from working dir is cleared
+
+
+$ git restore --staged <FILENAME>   -> To discard the file content changes in the staging area, move it to the working dir
+
+
+
+
+Reset -> to discard versions - that you have already saved
+
+
+
+$ git reset --hard <COMMIT-ID>      -> discarding the commits that were made after that particular commit -> undo and delete commit made after that commit
+
+$ git reset --hard HEAD^            -> undo and delete the latest commit pointed by HEAD pointer
+
+$ git reset --hard HEAD~1           -> undo and delete the last 1 commit pointed by HEAD pointer
+
+$ git reset --hard HEAD~2
+
+
+
+
+
+Revert -> revert some commits without actually deleting or removing those changes
+
+
+
+$ git revert HEAD
+
+$ git revert <Commit_id>
+
+
+
+
+$ git clean -n     -> to do a dry-run of the clean command and shows what will happen if you execute it
+
+
+$ git clean -f     -> will remove all the files that are in untracked state - permanent
+
+
+
+
+$ git rm <FILE_NAME>    -> Remove the file from the working directory and adds the deleted status of the file to the staging area for the next commit
+
+
+
+$ rm <FILE_NAME>
+
+$ git add -A
+
+
+
+.gitignore        -> to tell git to ignore certain files or types of files
+           - manually add this file
+  
+          - you have make a commit with this file
+
+
+Renaming Files in git
+
+
+
+
+$ git mv <FILE_NAME> <NEW_FILE_NAME>   -> Rename the file in the working directory and adds the renamed status of the file to the staging area for the next commit
+
+
+
+
+
+

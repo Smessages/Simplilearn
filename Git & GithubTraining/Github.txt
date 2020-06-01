@@ -1,0 +1,257 @@
+Remote Repositories:
+
+
+ - Creating & working with remote repository
+
+ - Pull, Push, Fork etc
+
+ - Merging, multiple commits
+
+
+
+GitHub:
+
+
+ - Create a Github account: https://github.com/
+
+ - Local repository -> the copy  of the repository on local machine
+ 
+- Remote repository -> the copy of the repository on a remote machine/server
+
+
+
+- Local repository can communicate with the remote repo. Github support:
+  
+ 1) https -> hyper text transfer protocol secure -> default port 443
+  
+ 2) SSH   -> Secure Shell  -> default port 22
+
+
+
+
+- Two types of repo:
+  
+ 
+ - Public
+     
+    -> this repo can be viewed by anyone.
+      
+    -> They will be able to edit it only if they have the permissions
+  
+ - Private
+      
+   -> this repo is private, can only be viewed by those who have the access
+     -> only those who have permission can edit this repo
+
+
+
+Add a repository to github
+ 
+-> Create a repository on github
+ 
+-> Initialize local repo on your local machine
+
+ -> Connect the local repo with the remote github repo using the command:
+       - $ git remote add <REMOTE_ALIAS> <REMOTE_REPO_URL>  -> Adding a new remote to the local repo
+      
+   - $ git remote          -> Show the list of remotes added to a local repo
+      
+  - $ git remote -v        -> Show the list of remotes added to a local repo with the urls associated with it
+
+
+
+-> Push the changes in local repo to the remote repo
+      
+ - $ git push   -> Sync or push the changes in the local repo to the remote repo
+      
+ - $ git push -u <REMOTE_NAME> <BRANCH_NAME>   -> -u -> will push the configurations as well. It will ask for the username & password for authentication
+
+
+
+
+Get a copy of my remote repository to a local machine:
+
+
+ - $ git clone <REMOTE_URL>  -> Create a local repo by cloning the remote repository, this uses the same name
+
+
+- $ git clone <REMOTE_URL> <LOCAL_NAME>   -> Create a local repo with name <LOCAL_NAME> by cloning the remote repository
+
+
+
+
+SSH protocol
+
+
+
+- Using public and private key
+  
+  - public key - have the extension .pub
+  
+  - private key - there won't be any extension
+
+
+
+
+- SSH
+  
+ - location where the keys are stored will be ~/.ssh
+  
+ - Generate a public/private rsa key pair
+    
+  $ ssh-keygen
+      
+    - Files created will have the names id_rsa & id_rsa.pub
+      
+    - Use the default name for the keys & passphrase empty
+
+    
+
+$ ssh-keygen -t rsa -b 4096 -C "abhijithvg@example.com"   -> alternate way where you want to override the default value.
+
+  
+
+
+- Copy the public key
+    
+  $ cat ~/.ssh/id_rsa.pub        -> copy the content
+  
+
+- Add this to your github account
+    
+  - Under account settings
+    
+  - SSH & GPG keys
+    
+  - Add new ssh key
+    
+  - Paste the public key you have copied
+
+
+
+- $ git clone <SSH_URL_REMOTE_REPO>
+
+
+
+
+$ git log --oneline -5                -> show only the last 5 commit logs
+
+
+
+
+
+- Before pushing any changes back to the remote repo, always do
+  
+  - $ git pull          -> will sync the changes made to the remote repo after your last pull
+  
+  - Fix the conflicts locally
+  
+  - Push the changes back
+
+
+
+
+
+Managing access to a github repo:
+ 
+- Go to Repository settings
+
+ - Manage access option
+ 
+- Invite a collaborator       -> collaborator - one who is part of that particular project
+
+
+
+
+
+$ git pull         -> PUlling the changes from remote repo to the local repo - it will update the working dir as well
+
+$ git fetch        -> fetching the changes from remote repo to local repo - without updating the working dir
+
+$ git merge        -> Merge the latest fetch to the working dir
+
+
+$ git pull         ->  git fetch + git merge
+
+
+
+
+
+Fork workflow:
+ 
+
+- We have a remote repo - github repo
+ 
+- Collaborator - will be able to update the remote github repo directly
+ 
+- An open source project
+  
+   - Source code for the project is available for public to see/view
+  
+   - Public will be able to Contribute to that project -> write code -> add features to that particular - to improve the project
+  
+   - Eg:- Linux OS - Linus Torvalds
+  
+   - Collaborators can be added? Yes you can add. Issue is first the number of collaborators, all collaborators can directly make the changes to the repo.
+    Stability of the repo cannot be guaranteed.
+  
+   - Contributors -> need the users to be able to contribute to the project, but in a stable way.
+  
+   - Process involved -> to sync the changes of contributors to the main project
+    
+     - Forking the repo                -> done by contributors
+    
+     - Review & combine the change     -> done by reviewer
+
+
+
+
+Forking
+  
+  - A contributor will be able to create a copy of the main project/repo into their github account.
+  
+  - They can make changes to the repository on their github account.
+  
+  - Once the changes are complete, they can "submit it for review" -> a Pull request
+  
+  - Reviewer will review the changes made by the contributor.
+  
+  - If all ok, then the reviewer will be syncing/merging the changes made by the contributor to the main project
+
+
+  
+  
+
+- After your forking, if there are new changes to the main repo, how to get it to your account
+  
+- Local repo of your forked repository - git pull
+
+
+-
+
+
+Steps Involved:
+
+1) Fork the project using the fork option
+
+2) Make changes to your forked Repository
+
+3) Create a Pull Request to the Reviewer
+
+4) Reviewer will review the change and then do a merge, if everything ok.
+
+
+
+
+
+Issues
+
+- Create issues, add labels, attach milestones, assign the issue to someone
+
+- Github can be used as an issue/bug tracking tool for your projects in GitHub
+
+
+
+Milestone
+
+ - Set a time limit for your issues to be fixed
