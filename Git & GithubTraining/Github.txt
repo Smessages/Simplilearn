@@ -95,7 +95,7 @@ SSH protocol
 
 - SSH
   
- - location where the keys are stored will be ~/.ssh
+ - location where the keys are stored will be ls -la/~/.ssh
   
  - Generate a public/private rsa key pair
     
